@@ -48,8 +48,15 @@ namespace firstMVCwebApp.Controllers
         public IActionResult Delete(int id)
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
-            toDoList.Remove(toDo);
             return View(toDo);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult ConfirmDelete(int id)
+        {
+            ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
+            toDoList.Remove(toDo);
+            return RedirectToAction("List");
         }
     }
 }
