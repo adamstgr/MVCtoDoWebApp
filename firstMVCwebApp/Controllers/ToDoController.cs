@@ -28,13 +28,13 @@ namespace firstMVCwebApp.Controllers
             return View("Create", model);
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(Guid id)
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
             return View(toDo);
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
             return View(toDo);
@@ -45,14 +45,14 @@ namespace firstMVCwebApp.Controllers
             return View(toDoList);
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
             return View(toDo);
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult ConfirmDelete(int id)
+        public IActionResult ConfirmDelete(Guid id)
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
             toDoList.Remove(toDo);
