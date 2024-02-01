@@ -17,7 +17,7 @@ namespace firstMVCwebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SubmitForm(ToDo model)
+        public IActionResult CreateToDo(ToDo model)
         {
             if (ModelState.IsValid)
             {
@@ -38,6 +38,18 @@ namespace firstMVCwebApp.Controllers
         {
             ToDo toDo = toDoList.FirstOrDefault(x => x.Id == id);
             return View(toDo);
+        }
+
+        [HttpPost]
+        public IActionResult EditToDo(ToDo model) 
+        {
+            ToDo toDo = toDoList.FirstOrDefault(x => x.Id == model.Id);
+            if (ModelState.IsValid)
+            {
+                toDo.Name = model.Name;
+                toDo.Description = model.Description;
+            }
+            return View("Details", toDo);
         }
 
         public IActionResult List()
