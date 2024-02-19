@@ -1,4 +1,6 @@
-﻿namespace firstMVCwebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace firstMVCwebApp.Models
 {
     public class ToDoItem
     {
@@ -6,7 +8,10 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
-        public DateTime? DoItemWhen {  get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DoItemWhenDate { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime? DoItemWhenTime { get; set; } 
         public bool Reminder { get; set; }
 
         public ToDoItem() 

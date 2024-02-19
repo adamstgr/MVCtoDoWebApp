@@ -22,9 +22,14 @@
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DoItemWhen" class="control-label">Date and time of task</label>
-                <input asp-for="DoItemWhen" class="form-control" />
-                <span asp-validation-for="DoItemWhen" class="text-danger"></span>
+                <label asp-for="DoItemWhenDate" class="control-label">Date of task</label>
+                <input asp-for="DoItemWhenDate" class="form-control" type="date"/>
+                <span asp-validation-for="DoItemWhenDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoItemWhenTime" class="control-label">Time of task</label>
+                <input asp-for="DoItemWhenTime" class="form-control" type="time" />
+                <span asp-validation-for="DoItemWhenTime" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -41,4 +46,20 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JC23Bol6bSXeSBDD2r7ns8j8cA7mKS0&libraries=places"></script>
+        <script type="text/javascript">
+            google.maps.event.addDomListener(window, 'load', function () {
+                var options = {
+                    componentRestrictions: { country: "us" }
+                };
+
+                var input = document.getElementById('Location');
+                var places = new google.maps.places.Autocomplete(input, options);
+
+
+            });
+        </script>
+}
 

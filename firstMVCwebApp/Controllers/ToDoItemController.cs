@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using firstMVCwebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace firstMVCwebApp.Controllers
 {
     public class ToDoItemController : Controller
     {
+        private static List<ToDoItem> toDoItems = new List<ToDoItem>();
         public IActionResult Index()
         {
             return View();
@@ -23,5 +25,6 @@ namespace firstMVCwebApp.Controllers
         {
             return View();
         }
+
     }
 }
