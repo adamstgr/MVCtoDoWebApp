@@ -5,7 +5,12 @@ namespace firstMVCwebApp.Controllers
 {
     public class ToDoItemController : Controller
     {
+        private readonly string _apiKey;
         private static List<ToDoItem> toDoItems = new List<ToDoItem>();
+        public ToDoItemController(IConfiguration configuration)
+        {
+            _apiKey = configuration["APIKey"];
+        }
         public IActionResult Index()
         {
             return View();
@@ -13,6 +18,7 @@ namespace firstMVCwebApp.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.GoogleMapsApiKey = _apiKey;
             return View();
         }
 
