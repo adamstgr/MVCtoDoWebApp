@@ -26,14 +26,19 @@
                 <input asp-for="DoItemWhenDate" class="form-control" type="date"/>
                 <span asp-validation-for="DoItemWhenDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="time-input">
                 <label asp-for="DoItemWhenTime" class="control-label">Time of task</label>
                 <input asp-for="DoItemWhenTime" class="form-control" type="time" />
                 <span asp-validation-for="DoItemWhenTime" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
+                <label class="form-check-label" >
+                    <input class="form-check-input" id="all-day" asp-for="IsAllDay" /> All day task?
+                </label>
+            </div>
+            <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Reminder" /> @Html.DisplayNameFor(model => model.Reminder)
+                    <input class="form-check-input" asp-for="WantsReminder" /> Would you like a reminder sent to you?
                 </label>
             </div>
             <div class="form-group">
@@ -58,5 +63,17 @@
                 var places = new google.maps.places.Autocomplete(input, options);
             });
         </script>
+        <script>
+            document.getElementById("all-day").addEventListener("change", function () {
+                var timeInput = document.getElementById("time-input"); // Assume you have a div containing your time inputs
+                if (document.getElementById("all-day").checked) {
+                    timeInput.style.display = "none";
+                } else {
+                    timeInput.style.display = "block";
+                }
+            });
+        </script>
 }
+
+
 

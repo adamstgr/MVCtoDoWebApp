@@ -11,8 +11,9 @@ namespace firstMVCwebApp.Models
         [DataType(DataType.Date)]
         public DateTime? DoItemWhenDate { get; set; }
         [DataType(DataType.Time)]
-        public DateTime? DoItemWhenTime { get; set; } 
-        public bool Reminder { get; set; }
+        public DateTime? DoItemWhenTime { get; set; }
+        public bool IsAllDay { get; set; }
+        public bool WantsReminder { get; set; }
 
         public ToDoItem() 
         {
